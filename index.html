@@ -423,6 +423,101 @@
       .progress-grid { grid-template-columns: 1fr; }
     }
 
+    /* ========== Policy Cards 政策文件 ========== */
+    .policy-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .policy-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 28px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .policy-card:hover {
+      border-color: rgba(197,165,90,0.25);
+      transform: translateY(-2px);
+    }
+    .policy-card.featured {
+      border-color: rgba(197,165,90,0.3);
+      background: linear-gradient(135deg, rgba(197,165,90,0.06), rgba(255,255,255,0.03));
+    }
+    .policy-card.featured::before {
+      content: '重点政策';
+      position: absolute; top: -1px; right: 24px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      color: var(--navy); font-size: 12px; font-weight: 700;
+      padding: 4px 14px; border-radius: 0 0 6px 6px;
+    }
+    .policy-meta {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 10px; flex-wrap: wrap;
+    }
+    .policy-date {
+      font-size: 13px; color: var(--gold); font-weight: 500;
+      background: rgba(197,165,90,0.1); padding: 2px 10px;
+      border-radius: 4px;
+    }
+    .policy-org { font-size: 13px; color: var(--gray); }
+    .policy-card h3 {
+      font-size: 17px; font-weight: 700; color: var(--white);
+      margin-bottom: 10px; line-height: 1.5;
+    }
+    .policy-card.featured h3 { font-size: 19px; }
+    .policy-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .policy-tag {
+      font-size: 12px; color: var(--gold-light);
+      background: rgba(197,165,90,0.08);
+      border: 1px solid rgba(197,165,90,0.15);
+      padding: 3px 10px; border-radius: 4px;
+    }
+    .policy-desc {
+      font-size: 14px; color: var(--gray-light); line-height: 1.7;
+    }
+
+    /* ========== Talent Cards 开源人才 ========== */
+    .talent-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .talent-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .talent-card:hover {
+      border-color: rgba(197,165,90,0.25);
+      transform: translateY(-3px);
+    }
+    .talent-card .tc-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(197,165,90,0.15), rgba(197,165,90,0.05));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+    }
+    .talent-card h3 {
+      font-size: 18px; font-weight: 700; color: var(--white);
+      margin-bottom: 12px;
+    }
+    .talent-card p {
+      font-size: 14px; color: var(--gray-light); line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .talent-highlight {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--gold);
+      background: rgba(197,165,90,0.08);
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .talent-highlight::before { content: '★'; font-size: 11px; }
+
+    @media (max-width: 900px) {
+      .talent-grid { grid-template-columns: 1fr; }
+      .policy-card { padding: 20px; }
+    }
+
     /* ========== Placeholder sections (will be replaced in later steps) ========== */
     .placeholder-section {
       min-height: 300px;
@@ -568,19 +663,153 @@
     </div>
   </section>
 
-  <!-- ========== 政策文件 (placeholder) ========== -->
+  <!-- ========== 政策文件 ========== -->
   <section id="policy" class="section-alt">
     <div class="section">
-      <div class="placeholder-section">[ Step 3 — 政策文件区域 ]</div>
+      <div class="section-header reveal">
+        <h2>制度先行，系统布局开源生态</h2>
+        <p>上海已出台多项开源相关政策文件，构建系统化制度保障体系</p>
+      </div>
+      <div class="policy-grid">
+        <!-- 重点政策 -->
+        <div class="policy-card featured reveal">
+          <div class="policy-meta">
+            <span class="policy-date">2025.12</span>
+            <span class="policy-org">沪府办〔2025〕33号 · 市政府办公厅</span>
+          </div>
+          <h3>《上海市加强开源体系建设实施方案》</h3>
+          <p class="policy-desc">围绕开源体系建设提出五大工程：基础能力筑基工程、项目培优工程、人才集聚工程、文化普及工程、治理协同工程。有效期至2028年12月。</p>
+          <div class="policy-tags">
+            <span class="policy-tag">基础能力筑基</span>
+            <span class="policy-tag">项目培优</span>
+            <span class="policy-tag">人才集聚</span>
+            <span class="policy-tag">文化普及</span>
+            <span class="policy-tag">治理协同</span>
+          </div>
+        </div>
+        <!-- 政策2 -->
+        <div class="policy-card reveal">
+          <div class="policy-meta">
+            <span class="policy-date">2024.12</span>
+            <span class="policy-org">市政府办公厅</span>
+          </div>
+          <h3>《关于人工智能"模塑申城"的实施方案》</h3>
+          <p class="policy-desc">构建高水平开源开放生态，打造大模型开源运营平台，推动AI领域开源创新发展。</p>
+          <div class="policy-tags">
+            <span class="policy-tag">开源开放生态</span>
+            <span class="policy-tag">大模型开源平台</span>
+          </div>
+        </div>
+        <!-- 政策3 -->
+        <div class="policy-card reveal">
+          <div class="policy-meta">
+            <span class="policy-date">2025.07</span>
+            <span class="policy-org">市政府办公厅</span>
+          </div>
+          <h3>《上海市具身智能产业发展实施方案》</h3>
+          <p class="policy-desc">构建全要素开源体系，支持开源社区建设，对重大开源项目给予最高500万元奖励。</p>
+          <div class="policy-tags">
+            <span class="policy-tag">全要素开源体系</span>
+            <span class="policy-tag">开源社区</span>
+            <span class="policy-tag">最高500万奖励</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ========== 开源人才 (placeholder) ========== -->
+  <!-- ========== 开源人才 ========== -->
   <section id="talent">
     <div class="section">
-      <div class="placeholder-section">[ Step 3 — 开源人才区域 ]</div>
+      <div class="section-header reveal">
+        <h2>以贡献为导向，集聚开源人才</h2>
+      </div>
+      <div class="talent-grid">
+        <div class="talent-card reveal">
+          <div class="tc-icon">📋</div>
+          <h3>人才评价机制</h3>
+          <p>试点"开源贡献"导向人才评价，纳入急需紧缺人才目录，鼓励国企作为职称评聘参考。</p>
+          <span class="talent-highlight">全国首批试点</span>
+        </div>
+        <div class="talent-card reveal">
+          <div class="tc-icon">🎓</div>
+          <h3>高校开源教育</h3>
+          <p>支持高校开设开源必修课，将开源贡献纳入评奖评优和推免体系，培养新一代开源人才。</p>
+          <span class="talent-highlight">复旦"开源先锋激励计划"已启动</span>
+        </div>
+        <div class="talent-card reveal">
+          <div class="tc-icon">👥</div>
+          <h3>从业者队伍建设</h3>
+          <p>鼓励企业设立开源事业部，推动校源行活动已覆盖12所高校，产教融合持续深化。</p>
+          <span class="talent-highlight">产教融合持续推进</span>
+        </div>
+      </div>
+      <div class="text-center mt-40 reveal">
+        <button class="btn-cta" onclick="openModal('talentModal')">开源人才入库登记</button>
+      </div>
     </div>
   </section>
+
+  <!-- ========== 人才入库弹窗 ========== -->
+  <div class="modal-overlay" id="talentModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('talentModal')">&times;</button>
+      <h3>开源人才入库登记</h3>
+      <form onsubmit="return handleTalentSubmit(event)">
+        <div class="form-group">
+          <label>姓名 *</label>
+          <input type="text" required placeholder="请输入您的姓名">
+        </div>
+        <div class="form-group">
+          <label>所属单位 *</label>
+          <input type="text" required placeholder="请输入所属单位">
+        </div>
+        <div class="form-group">
+          <label>所在区 *</label>
+          <select required>
+            <option value="">请选择</option>
+            <option>黄浦区</option><option>徐汇区</option><option>长宁区</option>
+            <option>静安区</option><option>普陀区</option><option>虹口区</option>
+            <option>杨浦区</option><option>闵行区</option><option>宝山区</option>
+            <option>嘉定区</option><option>浦东新区</option><option>金山区</option>
+            <option>松江区</option><option>青浦区</option><option>奉贤区</option>
+            <option>崇明区</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>开源社区ID</label>
+          <input type="text" placeholder="GitHub / Gitee / AtomGit 等">
+        </div>
+        <div class="form-group">
+          <label>主要贡献领域 *</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" value="ai">人工智能</label>
+            <label><input type="checkbox" value="cloud">云计算</label>
+            <label><input type="checkbox" value="os">操作系统</label>
+            <label><input type="checkbox" value="db">数据库</label>
+            <label><input type="checkbox" value="devtools">开发工具</label>
+            <label><input type="checkbox" value="security">安全</label>
+            <label><input type="checkbox" value="other">其他</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>代表性项目名称</label>
+          <input type="text" placeholder="请输入您主要参与的开源项目">
+        </div>
+        <div class="form-group">
+          <label>联系电话 *</label>
+          <input type="tel" required placeholder="请输入联系电话">
+        </div>
+        <div class="form-group">
+          <label>邮箱 *</label>
+          <input type="email" required placeholder="请输入邮箱地址">
+        </div>
+        <div class="text-center mt-24">
+          <button type="submit" class="btn-submit">提交登记</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- ========== 案例遴选 (placeholder) ========== -->
   <section id="cases" class="section-alt">
@@ -693,6 +922,15 @@
       t.textContent = msg;
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // Talent form submit
+    function handleTalentSubmit(e) {
+      e.preventDefault();
+      closeModal('talentModal');
+      showToast('提交成功，我们将在3个工作日内与您联系');
+      e.target.reset();
+      return false;
     }
 
     // Modal utility
