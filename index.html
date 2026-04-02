@@ -661,6 +661,48 @@
       .logo-wall { grid-template-columns: repeat(2, 1fr); }
       .intl-grid { grid-template-columns: 1fr; }
     }
+
+    /* ========== News 新闻动态 ========== */
+    .news-list {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .news-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 22px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .news-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .news-item:hover { background: rgba(255,255,255,0.03); }
+    .news-date {
+      font-size: 14px; color: var(--gray); white-space: nowrap;
+      min-width: 90px; font-variant-numeric: tabular-nums;
+    }
+    .news-type {
+      font-size: 12px; font-weight: 600; padding: 3px 10px;
+      border-radius: 4px; white-space: nowrap;
+    }
+    .news-type.policy { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .news-type.event { background: rgba(16,185,129,0.15); color: #34d399; }
+    .news-title {
+      font-size: 15px; color: var(--white); flex: 1;
+      transition: color 0.2s;
+    }
+    .news-item:hover .news-title { color: var(--gold); }
+    .news-arrow {
+      color: var(--gray); font-size: 18px;
+      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+    }
+    .news-item:hover .news-arrow {
+      opacity: 1; transform: translateX(4px);
+    }
+
+    @media (max-width: 900px) {
+      .news-item { flex-wrap: wrap; gap: 8px; padding: 16px; }
+      .news-date { min-width: auto; }
+      .news-title { flex-basis: 100%; order: 3; }
+    }
   </style>
 </head>
 <body>
@@ -1153,10 +1195,50 @@
     </div>
   </section>
 
-  <!-- ========== 新闻动态 (placeholder) ========== -->
+  <!-- ========== 新闻动态 ========== -->
   <section id="news">
     <div class="section">
-      <div class="placeholder-section">[ Step 6 — 新闻动态区域 ]</div>
+      <div class="section-header reveal">
+        <h2>最新动态</h2>
+      </div>
+      <div class="news-list">
+        <div class="news-item reveal">
+          <span class="news-date">2025.12.25</span>
+          <span class="news-type policy">政策</span>
+          <span class="news-title">《上海市加强开源体系建设实施方案》正式施行</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">2025.12.26</span>
+          <span class="news-type policy">政策</span>
+          <span class="news-title">上海宣布将上线国内首个面向海外开源平台</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">2025.10.15</span>
+          <span class="news-type event">活动</span>
+          <span class="news-title">开放原子校源行（上海站）在复旦大学成功举办</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">2025.10.28</span>
+          <span class="news-type event">活动</span>
+          <span class="news-title">AtomGit升级暨人工智能开源社区发布会举行</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">2025.07.28</span>
+          <span class="news-type policy">政策</span>
+          <span class="news-title">《上海市具身智能产业发展实施方案》正式施行</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">2025.03.23</span>
+          <span class="news-type event">活动</span>
+          <span class="news-title">2025全球开发者先锋大会在上海徐汇开幕</span>
+          <span class="news-arrow">→</span>
+        </div>
+      </div>
     </div>
   </section>
 
