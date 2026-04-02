@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上海开源创新专区</title>
+  <meta name="description" content="上海开源创新专区 - 打造具有国际竞争力的开源创新策源地">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ========== CSS Reset & Base ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      color: #e8e8e8;
+      background: #060e1a;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ========== Color Variables ========== */
+    :root {
+      --navy-deep: #060e1a;
+      --navy: #0a1628;
+      --navy-mid: #0f2035;
+      --navy-light: #1a3a5c;
+      --gold: #c5a55a;
+      --gold-light: #e0c97a;
+      --gold-dim: #a08840;
+      --white: #ffffff;
+      --gray-light: #b0bec5;
+      --gray: #78909c;
+      --section-bg-alt: #0b1929;
+    }
+
+    /* ========== Typography ========== */
+    .font-serif { font-family: 'Noto Serif SC', 'SimSun', serif; }
+
+    /* ========== Navigation ========== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(6, 14, 26, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197, 165, 90, 0.15);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .navbar.scrolled {
+      background: rgba(6, 14, 26, 0.98);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .navbar-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 72px;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--white);
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700; font-size: 18px;
+      white-space: nowrap;
+    }
+    .navbar-brand .brand-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; color: var(--navy);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block; padding: 8px 14px;
+      color: var(--gray-light);
+      text-decoration: none; font-size: 14px; font-weight: 400;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--gold);
+      background: rgba(197, 165, 90, 0.08);
+    }
+    .nav-authority {
+      font-size: 12px; color: var(--gray);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 16px; margin-left: 8px;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+    .nav-authority span { display: block; color: var(--gray-light); font-weight: 500; }
+
+    /* Mobile menu button */
+    .menu-toggle {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: 8px; color: var(--white);
+    }
+    .menu-toggle svg { width: 24px; height: 24px; }
+
+    /* ========== Section Common ========== */
+    .section {
+      padding: 100px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-alt { background: var(--section-bg-alt); }
+    .section-full {
+      padding: 100px 24px;
+    }
+    .section-full > .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 32px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .section-header h2::after {
+      content: '';
+      display: block;
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+    .section-header p {
+      color: var(--gray); font-size: 15px;
+      margin-top: 12px;
+      max-width: 680px; margin-left: auto; margin-right: auto;
+    }
+
+    /* ========== Footer ========== */
+    .footer {
+      background: #040a14;
+      border-top: 1px solid rgba(197, 165, 90, 0.1);
+      padding: 40px 24px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-brand {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--white);
+    }
+    .footer-info {
+      font-size: 13px; color: var(--gray);
+      text-align: center; flex: 1;
+    }
+    .footer-info span { margin: 0 12px; }
+    .footer-copy {
+      font-size: 12px; color: rgba(255,255,255,0.25);
+    }
+
+    /* ========== Scroll Reveal Animation ========== */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* ========== Toast ========== */
+    .toast {
+      position: fixed; top: 88px; left: 50%; transform: translateX(-50%) translateY(-20px);
+      background: var(--gold); color: var(--navy);
+      padding: 14px 28px; border-radius: 8px;
+      font-size: 14px; font-weight: 500;
+      box-shadow: 0 4px 24px rgba(197,165,90,0.3);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 2000;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    /* ========== Modal ========== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1500;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--navy-mid);
+      border: 1px solid rgba(197,165,90,0.2);
+      border-radius: 12px;
+      padding: 36px; width: 100%; max-width: 560px;
+      max-height: 85vh; overflow-y: auto;
+      position: relative;
+    }
+    .modal h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px; color: var(--white);
+      margin-bottom: 24px;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: none; border: none;
+      color: var(--gray); font-size: 24px;
+      cursor: pointer; line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--white); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--gray-light); margin-bottom: 6px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px; color: var(--white);
+      font-size: 14px; font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-group select option { background: var(--navy); }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .checkbox-group label {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--gray-light); cursor: pointer;
+      padding: 4px 10px; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px; transition: border-color 0.2s, background 0.2s;
+    }
+    .checkbox-group label:has(input:checked) {
+      border-color: var(--gold); background: rgba(197,165,90,0.1);
+    }
+    .checkbox-group input { display: none; }
+    .btn-submit {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      color: var(--navy); font-size: 15px; font-weight: 700;
+      border: none; border-radius: 8px; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(197,165,90,0.3);
+    }
+
+    /* ========== CTA Button (used in sections) ========== */
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      color: var(--navy); font-size: 15px; font-weight: 700;
+      border: none; border-radius: 8px; cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(197,165,90,0.35);
+    }
+
+    /* ========== Utility ========== */
+    .text-gold { color: var(--gold); }
+    .text-center { text-align: center; }
+    .mt-40 { margin-top: 40px; }
+    .mt-24 { margin-top: 24px; }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 900px) {
+      .navbar-inner { padding: 0 16px; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 72px; left: 0; right: 0;
+        background: rgba(6, 14, 26, 0.98);
+        flex-direction: column; padding: 16px;
+        border-bottom: 1px solid rgba(197,165,90,0.15);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 16px; }
+      .nav-authority { display: none; }
+      .menu-toggle { display: block; }
+      .section { padding: 60px 16px; }
+      .section-full { padding: 60px 16px; }
+      .section-header h2 { font-size: 26px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    /* ========== Placeholder sections (will be replaced in later steps) ========== */
+    .placeholder-section {
+      min-height: 300px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--gray);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== Navigation ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="navbar-brand">
+        <div class="brand-icon">沪</div>
+        上海开源创新专区
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">首页</a></li>
+        <li><a href="#policy">政策文件</a></li>
+        <li><a href="#talent">开源人才</a></li>
+        <li><a href="#cases">案例遴选</a></li>
+        <li><a href="#ecosystem">生态全景</a></li>
+        <li><a href="#international">国际合作</a></li>
+        <li><a href="#news">新闻动态</a></li>
+      </ul>
+      <div class="nav-authority">
+        <span>上海市经济和信息化委员会</span>
+        指导单位
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== Toast ========== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ========== Hero (placeholder) ========== -->
+  <section id="hero" style="padding-top: 72px;">
+    <div class="section">
+      <div class="placeholder-section">[ Step 2 — Hero区 + 数据展示 + 战略目标进度 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== 政策文件 (placeholder) ========== -->
+  <section id="policy" class="section-alt">
+    <div class="section">
+      <div class="placeholder-section">[ Step 3 — 政策文件区域 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== 开源人才 (placeholder) ========== -->
+  <section id="talent">
+    <div class="section">
+      <div class="placeholder-section">[ Step 3 — 开源人才区域 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== 案例遴选 (placeholder) ========== -->
+  <section id="cases" class="section-alt">
+    <div class="section">
+      <div class="placeholder-section">[ Step 4 — 案例遴选区域 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== 生态全景 (placeholder) ========== -->
+  <section id="ecosystem">
+    <div class="section">
+      <div class="placeholder-section">[ Step 5 — 生态全景区域 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== 国际合作 (placeholder) ========== -->
+  <section id="international" class="section-alt">
+    <div class="section">
+      <div class="placeholder-section">[ Step 5 — 国际合作区域 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== 新闻动态 (placeholder) ========== -->
+  <section id="news">
+    <div class="section">
+      <div class="placeholder-section">[ Step 6 — 新闻动态区域 ]</div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">上海开源创新专区</div>
+      <div class="footer-info">
+        <span>指导单位：上海市经济和信息化委员会</span>
+        <span>支撑单位：中国信息通信研究院</span>
+      </div>
+      <div class="footer-copy">&copy; 2026 上海开源创新专区 版权所有</div>
+    </div>
+  </footer>
+
+  <!-- ========== Core JS ========== -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = navLinks.querySelectorAll('a');
+    function updateActiveNav() {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+          navItems.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Toast utility
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // Modal utility
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+</body>
+</html>
