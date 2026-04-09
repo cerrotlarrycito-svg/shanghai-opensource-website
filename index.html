@@ -11,7 +11,7 @@
   <style>
     /* ========== Reset & Base ========== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    html { scroll-padding-top: 68px; }
     body {
       font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
       color: #333; background: #fff;
@@ -71,8 +71,11 @@
       font-size: 14px; font-weight: 400; border-radius: 6px;
       transition: color 0.2s, background 0.2s; white-space: nowrap;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--blue); background: var(--blue-bg);
+    .nav-links a:hover { color: var(--blue); background: var(--blue-bg); }
+    .nav-links a.active {
+      color: var(--blue); font-weight: 600;
+      background: var(--blue-bg);
+      border-bottom: 2px solid var(--blue);
     }
     .nav-authority {
       font-size: 12px; color: var(--gray-light);
@@ -199,12 +202,29 @@
       font-size: 13px; color: var(--gray-text); line-height: 1.5;
     }
 
+    /* ========== Page Routing ========== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ========== Sub-page Header Banner ========== */
+    .page-banner {
+      padding: 88px 24px 36px;
+      background: linear-gradient(170deg, var(--blue) 0%, var(--blue-light) 100%);
+      text-align: center; color: var(--white);
+    }
+    .page-banner h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 28px; font-weight: 700; margin-bottom: 8px;
+    }
+    .page-banner p {
+      font-size: 15px; color: rgba(255,255,255,0.8);
+    }
+
     /* ========== Section Common ========== */
     .section {
-      padding: 80px 24px;
+      padding: 60px 24px;
       max-width: 1200px; margin: 0 auto;
     }
-    .section-alt { background: var(--gray-bg); }
     .section-header {
       text-align: center; margin-bottom: 48px;
     }
@@ -534,7 +554,7 @@
   <!-- ========== Navbar ========== -->
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
-      <a href="#top" class="navbar-brand">
+      <a href="#/" class="navbar-brand">
         <div class="brand-icon">源</div>
         地方开源创新专区
       </a>
@@ -544,13 +564,13 @@
         </svg>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#top" class="active">首页</a></li>
-        <li><a href="#policy">政策文件</a></li>
-        <li><a href="#talent">开源人才</a></li>
-        <li><a href="#cases">案例遴选</a></li>
-        <li><a href="#enterprise">企业展示</a></li>
-        <li><a href="#projects">项目展示</a></li>
-        <li><a href="#news">新闻动态</a></li>
+        <li><a href="#/" data-page="home">首页</a></li>
+        <li><a href="#/policy" data-page="policy">政策文件</a></li>
+        <li><a href="#/talent" data-page="talent">开源人才</a></li>
+        <li><a href="#/cases" data-page="cases">案例遴选</a></li>
+        <li><a href="#/enterprise" data-page="enterprise">企业展示</a></li>
+        <li><a href="#/projects" data-page="projects">项目展示</a></li>
+        <li><a href="#/news" data-page="news">新闻动态</a></li>
       </ul>
       <div class="nav-authority">
         <span>经济和信息化主管部门</span>
@@ -563,53 +583,53 @@
   <div class="toast" id="toast"></div>
 
   <!-- ========== 首页 · 分流大厅 ========== -->
-  <div id="top">
+  <div id="page-home" class="page active">
     <!-- 顶部：简介 + 快捷入口 -->
     <section class="hero">
       <h1 class="font-serif">地方开源创新专区</h1>
       <p class="subtitle">汇聚开源政策、人才、企业与项目资源，服务地方开源生态体系建设</p>
       <div class="hero-buttons">
-        <a href="#policy" class="hero-btn primary">政策文件</a>
-        <a href="#cases" class="hero-btn primary">企业申报</a>
-        <a href="#projects" class="hero-btn primary">项目展示</a>
-        <a href="#talent" class="hero-btn outline">人才服务</a>
+        <a href="#/policy" class="hero-btn primary">政策文件</a>
+        <a href="#/cases" class="hero-btn primary">企业申报</a>
+        <a href="#/projects" class="hero-btn primary">项目展示</a>
+        <a href="#/talent" class="hero-btn outline">人才服务</a>
       </div>
     </section>
 
     <!-- 中部：频道卡片入口 -->
     <div class="channels">
       <div class="channels-grid">
-        <a href="#policy" class="channel-card reveal">
+        <a href="#/policy" class="channel-card reveal">
           <div class="channel-icon blue">📄</div>
           <h3>政策文件</h3>
           <p>查阅地方开源体系建设相关政策法规、实施方案及配套文件</p>
           <span class="channel-arrow">查看详情 →</span>
         </a>
-        <a href="#talent" class="channel-card reveal">
+        <a href="#/talent" class="channel-card reveal">
           <div class="channel-icon green">👤</div>
           <h3>开源人才</h3>
           <p>了解开源人才评价机制、教育培养及从业者服务相关信息</p>
           <span class="channel-arrow">查看详情 →</span>
         </a>
-        <a href="#cases" class="channel-card reveal">
+        <a href="#/cases" class="channel-card reveal">
           <div class="channel-icon orange">🏆</div>
           <h3>案例遴选</h3>
           <p>浏览优秀开源项目案例，了解申报流程及评选标准</p>
           <span class="channel-arrow">查看详情 →</span>
         </a>
-        <a href="#enterprise" class="channel-card reveal">
+        <a href="#/enterprise" class="channel-card reveal">
           <div class="channel-icon purple">🏢</div>
           <h3>企业展示</h3>
           <p>展示本地区开源生态重点企业、高校及科研机构</p>
           <span class="channel-arrow">查看详情 →</span>
         </a>
-        <a href="#projects" class="channel-card reveal">
+        <a href="#/projects" class="channel-card reveal">
           <div class="channel-icon teal">💻</div>
           <h3>项目展示</h3>
           <p>发现本地区优质开源项目，了解技术方向与合作机会</p>
           <span class="channel-arrow">查看详情 →</span>
         </a>
-        <a href="#news" class="channel-card reveal">
+        <a href="#/news" class="channel-card reveal">
           <div class="channel-icon red">📰</div>
           <h3>新闻动态</h3>
           <p>获取开源领域最新政策动向、行业活动及工作进展</p>
@@ -641,12 +661,12 @@
   </div>
 
   <!-- ========== 政策文件 ========== -->
-  <section id="policy">
+  <div id="page-policy" class="page">
+    <div class="page-banner">
+      <h1>政策文件</h1>
+      <p>地方开源体系建设相关政策法规及实施方案</p>
+    </div>
     <div class="section">
-      <div class="section-header reveal">
-        <h2>政策文件</h2>
-        <p>地方开源体系建设相关政策法规及实施方案</p>
-      </div>
       <div class="policy-grid">
         <div class="policy-card featured reveal">
           <div class="policy-meta">
@@ -690,15 +710,15 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ========== 开源人才 ========== -->
-  <section id="talent" class="section-alt">
+  <div id="page-talent" class="page">
+    <div class="page-banner">
+      <h1>开源人才</h1>
+      <p>以贡献为导向，集聚开源人才</p>
+    </div>
     <div class="section">
-      <div class="section-header reveal">
-        <h2>开源人才</h2>
-        <p>以贡献为导向，集聚开源人才</p>
-      </div>
       <div class="talent-grid">
         <div class="talent-card reveal">
           <div class="tc-icon">📋</div>
@@ -723,7 +743,7 @@
         <button class="btn-cta" onclick="openModal('talentModal')">开源人才入库登记</button>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- 人才入库弹窗 -->
   <div class="modal-overlay" id="talentModal">
@@ -779,12 +799,12 @@
   </div>
 
   <!-- ========== 案例遴选 ========== -->
-  <section id="cases">
+  <div id="page-cases" class="page">
+    <div class="page-banner">
+      <h1>案例遴选</h1>
+      <p>优质项目培优，标杆案例引领</p>
+    </div>
     <div class="section">
-      <div class="section-header reveal">
-        <h2>案例遴选</h2>
-        <p>优质项目培优，标杆案例引领</p>
-      </div>
       <div class="cases-grid">
         <div class="case-card reveal">
           <span class="case-tag ai">人工智能</span>
@@ -851,7 +871,7 @@
         <button class="btn-cta" onclick="openModal('caseModal')">申报优秀开源案例</button>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- 案例申报弹窗 -->
   <div class="modal-overlay" id="caseModal">
@@ -904,12 +924,12 @@
   </div>
 
   <!-- ========== 企业展示 ========== -->
-  <section id="enterprise" class="section-alt">
+  <div id="page-enterprise" class="page">
+    <div class="page-banner">
+      <h1>企业展示</h1>
+      <p>本地区开源生态重点企业、高校及科研机构</p>
+    </div>
     <div class="section">
-      <div class="section-header reveal">
-        <h2>企业展示</h2>
-        <p>本地区开源生态重点企业、高校及科研机构</p>
-      </div>
       <div class="ent-grid">
         <div class="ent-card reveal">
           <div class="ent-avatar">🏢</div>
@@ -973,15 +993,15 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ========== 项目展示 ========== -->
-  <section id="projects">
+  <div id="page-projects" class="page">
+    <div class="page-banner">
+      <h1>项目展示</h1>
+      <p>本地区优质开源项目，涵盖多个技术领域</p>
+    </div>
     <div class="section">
-      <div class="section-header reveal">
-        <h2>项目展示</h2>
-        <p>本地区优质开源项目，涵盖多个技术领域</p>
-      </div>
       <div class="proj-grid">
         <div class="proj-card reveal">
           <div class="proj-top">
@@ -1037,14 +1057,15 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ========== 新闻动态 ========== -->
-  <section id="news" class="section-alt">
+  <div id="page-news" class="page">
+    <div class="page-banner">
+      <h1>新闻动态</h1>
+      <p>开源领域最新政策动向、行业活动及工作进展</p>
+    </div>
     <div class="section">
-      <div class="section-header reveal">
-        <h2>新闻动态</h2>
-      </div>
       <div class="news-list">
         <div class="news-item reveal">
           <span class="news-date">202X.XX.XX</span>
@@ -1084,7 +1105,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ========== Footer ========== -->
   <footer class="footer">
@@ -1100,53 +1121,72 @@
 
   <!-- ========== JS ========== -->
   <script>
-    // Navbar scroll
+    // ---- Hash Router ----
+    const routes = {
+      '/': 'home', '/policy': 'policy', '/talent': 'talent',
+      '/cases': 'cases', '/enterprise': 'enterprise',
+      '/projects': 'projects', '/news': 'news'
+    };
+
+    const navLinks = document.getElementById('navLinks');
+    const navItems = navLinks.querySelectorAll('a[data-page]');
+    const pages = document.querySelectorAll('.page');
+
+    function navigateTo(path) {
+      const pageId = routes[path] || 'home';
+
+      // Hide all pages, show target
+      pages.forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+
+      // Update nav active state
+      navItems.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('data-page') === pageId);
+      });
+
+      // Scroll to top
+      window.scrollTo(0, 0);
+
+      // Trigger reveal animations for the active page
+      const els = target ? target.querySelectorAll('.reveal') : [];
+      els.forEach((el, i) => {
+        el.classList.remove('visible');
+        setTimeout(() => el.classList.add('visible'), 60 * i);
+      });
+
+      // Close mobile menu
+      navLinks.classList.remove('open');
+    }
+
+    function onHashChange() {
+      const hash = location.hash.replace('#', '') || '/';
+      navigateTo(hash);
+    }
+
+    window.addEventListener('hashchange', onHashChange);
+    // Initial route
+    onHashChange();
+
+    // ---- Navbar scroll shadow ----
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 10);
     });
 
-    // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    // ---- Mobile menu ----
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      navLinks.classList.toggle('open');
     });
 
-    // Active nav on scroll
-    const sections = document.querySelectorAll('section[id], div[id="top"]');
-    const navItems = navLinks.querySelectorAll('a');
-    function updateActiveNav() {
-      const y = window.scrollY + 120;
-      sections.forEach(sec => {
-        const top = sec.offsetTop, h = sec.offsetHeight;
-        const id = sec.getAttribute('id');
-        if (y >= top && y < top + h) {
-          navItems.forEach(a => {
-            const href = a.getAttribute('href').replace('#', '');
-            a.classList.toggle('active', href === id);
-          });
-        }
-      });
-    }
-    window.addEventListener('scroll', updateActiveNav);
-    updateActiveNav();
-
-    // Scroll reveal
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // Toast
+    // ---- Toast ----
     function showToast(msg) {
       const t = document.getElementById('toast');
       t.textContent = msg; t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3000);
     }
 
-    // Form handlers
+    // ---- Form handlers ----
     function handleTalentSubmit(e) {
       e.preventDefault(); closeModal('talentModal');
       showToast('提交成功，我们将在3个工作日内与您联系');
@@ -1158,7 +1198,7 @@
       e.target.reset(); return false;
     }
 
-    // Modal
+    // ---- Modal ----
     function openModal(id) {
       document.getElementById(id).classList.add('open');
       document.body.style.overflow = 'hidden';
