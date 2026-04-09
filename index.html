@@ -343,12 +343,164 @@
     .mt-40 { margin-top: 40px; }
     .mt-24 { margin-top: 24px; }
 
-    /* ========== Placeholder (Step 2) ========== */
-    .placeholder {
-      min-height: 200px; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 16px; color: var(--gray-light);
-      border: 1px dashed var(--gray-border); border-radius: 10px;
+    /* ========== Policy 政策文件 ========== */
+    .policy-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .policy-card {
+      background: var(--white); border: 1px solid var(--gray-border);
+      border-radius: 10px; padding: 24px 28px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .policy-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: 0 4px 16px rgba(26,82,118,0.06);
+    }
+    .policy-card.featured {
+      border-left: 4px solid var(--blue);
+      background: var(--blue-bg);
+    }
+    .policy-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .policy-date {
+      font-size: 13px; font-weight: 500; color: var(--blue);
+      background: var(--blue-pale); padding: 2px 10px; border-radius: 4px;
+    }
+    .policy-org { font-size: 13px; color: var(--gray-text); }
+    .policy-card h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+    .policy-card.featured h3 { font-size: 18px; }
+    .policy-desc { font-size: 14px; color: var(--text-light); line-height: 1.7; }
+    .policy-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .policy-tag {
+      font-size: 12px; color: var(--blue); background: var(--blue-pale);
+      padding: 2px 8px; border-radius: 3px;
+    }
+
+    /* ========== Talent 开源人才 ========== */
+    .talent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .talent-card {
+      background: var(--white); border: 1px solid var(--gray-border);
+      border-radius: 10px; padding: 28px 24px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .talent-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: 0 4px 16px rgba(26,82,118,0.06);
+    }
+    .talent-card .tc-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--blue-bg); display: flex; align-items: center;
+      justify-content: center; font-size: 20px; margin-bottom: 16px;
+    }
+    .talent-card h3 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .talent-card p { font-size: 14px; color: var(--gray-text); line-height: 1.7; margin-bottom: 14px; }
+    .talent-highlight {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px; font-weight: 600; color: var(--blue);
+      background: var(--blue-bg); padding: 3px 10px; border-radius: 20px;
+    }
+
+    /* ========== Cases 案例遴选 ========== */
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .case-card {
+      background: var(--white); border: 1px solid var(--gray-border);
+      border-radius: 10px; padding: 24px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .case-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: 0 4px 16px rgba(26,82,118,0.06);
+    }
+    .case-tag {
+      display: inline-block; font-size: 12px; font-weight: 600;
+      padding: 2px 8px; border-radius: 3px; margin-bottom: 12px; align-self: flex-start;
+    }
+    .case-tag.ai { background: #D4E6F1; color: #1A5276; }
+    .case-tag.os { background: #D5F5E3; color: #1E8449; }
+    .case-tag.fin { background: #FCF3CF; color: #9A7D0A; }
+    .case-tag.auto { background: #E8DAEF; color: #6C3483; }
+    .case-tag.robot { background: #FADBD8; color: #922B21; }
+    .case-card h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .case-org { font-size: 13px; color: var(--gray-text); margin-bottom: 10px; }
+    .case-intro { font-size: 14px; color: var(--text-light); line-height: 1.6; flex: 1; margin-bottom: 14px; }
+    .case-metrics { display: flex; gap: 10px; }
+    .case-metric {
+      flex: 1; background: var(--gray-bg); border-radius: 6px; padding: 10px; text-align: center;
+    }
+    .case-metric .val { font-size: 14px; font-weight: 700; color: var(--blue); }
+    .case-metric .lbl { font-size: 11px; color: var(--gray-text); margin-top: 2px; }
+
+    /* ========== Enterprise 企业展示 ========== */
+    .ent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .ent-card {
+      background: var(--white); border: 1px solid var(--gray-border);
+      border-radius: 10px; padding: 24px 20px; text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .ent-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: 0 4px 16px rgba(26,82,118,0.06);
+    }
+    .ent-avatar {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: var(--gray-bg); display: flex; align-items: center;
+      justify-content: center; font-size: 24px; margin: 0 auto 14px;
+    }
+    .ent-card h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .ent-card .ent-type { font-size: 12px; color: var(--gray-light); }
+
+    /* ========== Projects 项目展示 ========== */
+    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .proj-card {
+      background: var(--white); border: 1px solid var(--gray-border);
+      border-radius: 10px; padding: 24px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .proj-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: 0 4px 16px rgba(26,82,118,0.06);
+    }
+    .proj-card .proj-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .proj-lang {
+      font-size: 11px; font-weight: 600; padding: 2px 8px;
+      border-radius: 3px; background: var(--blue-bg); color: var(--blue);
+    }
+    .proj-card h3 { font-size: 16px; font-weight: 700; color: var(--text); }
+    .proj-card .proj-org { font-size: 13px; color: var(--gray-text); }
+    .proj-card .proj-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 14px; }
+    .proj-stats { display: flex; gap: 16px; }
+    .proj-stat { font-size: 13px; color: var(--gray-text); }
+    .proj-stat strong { color: var(--blue); font-weight: 700; }
+
+    /* ========== News 新闻动态 ========== */
+    .news-list { display: flex; flex-direction: column; }
+    .news-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 20px; border-bottom: 1px solid var(--gray-border);
+      transition: background 0.2s; cursor: default;
+    }
+    .news-item:first-child { border-top: 1px solid var(--gray-border); }
+    .news-item:hover { background: var(--blue-bg); }
+    .news-date { font-size: 14px; color: var(--gray-text); white-space: nowrap; min-width: 86px; }
+    .news-type {
+      font-size: 12px; font-weight: 600; padding: 2px 8px;
+      border-radius: 3px; white-space: nowrap;
+    }
+    .news-type.policy { background: #D4E6F1; color: #1A5276; }
+    .news-type.event { background: #D5F5E3; color: #1E8449; }
+    .news-title { font-size: 15px; color: var(--text); flex: 1; transition: color 0.2s; }
+    .news-item:hover .news-title { color: var(--blue); }
+    .news-arrow {
+      color: var(--gray-light); font-size: 16px;
+      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+    }
+    .news-item:hover .news-arrow { opacity: 1; transform: translateX(3px); }
+
+    @media (max-width: 900px) {
+      .talent-grid, .cases-grid { grid-template-columns: 1fr; }
+      .ent-grid { grid-template-columns: repeat(2, 1fr); }
+      .proj-grid { grid-template-columns: 1fr; }
+      .news-item { flex-wrap: wrap; gap: 8px; padding: 14px 16px; }
+      .news-date { min-width: auto; }
+      .news-title { flex-basis: 100%; order: 3; }
     }
 
     /* ========== Responsive ========== */
@@ -488,45 +640,449 @@
     </div>
   </div>
 
-  <!-- ========== 政策文件 (placeholder) ========== -->
+  <!-- ========== 政策文件 ========== -->
   <section id="policy">
     <div class="section">
-      <div class="placeholder">[ Step 2 — 政策文件 ]</div>
+      <div class="section-header reveal">
+        <h2>政策文件</h2>
+        <p>地方开源体系建设相关政策法规及实施方案</p>
+      </div>
+      <div class="policy-grid">
+        <div class="policy-card featured reveal">
+          <div class="policy-meta">
+            <span class="policy-date">202X.XX</span>
+            <span class="policy-org">地方政府办公厅</span>
+          </div>
+          <h3>《地方加强开源体系建设实施方案》</h3>
+          <p class="policy-desc">围绕开源体系建设提出五大工程：基础能力筑基工程、项目培优工程、人才集聚工程、文化普及工程、治理协同工程。</p>
+          <div class="policy-tags">
+            <span class="policy-tag">基础能力筑基</span>
+            <span class="policy-tag">项目培优</span>
+            <span class="policy-tag">人才集聚</span>
+            <span class="policy-tag">文化普及</span>
+            <span class="policy-tag">治理协同</span>
+          </div>
+        </div>
+        <div class="policy-card reveal">
+          <div class="policy-meta">
+            <span class="policy-date">202X.XX</span>
+            <span class="policy-org">地方政府办公厅</span>
+          </div>
+          <h3>《关于人工智能创新发展的实施方案》</h3>
+          <p class="policy-desc">构建高水平开源开放生态，打造大模型开源运营平台，推动AI领域开源创新发展。</p>
+          <div class="policy-tags">
+            <span class="policy-tag">开源开放生态</span>
+            <span class="policy-tag">大模型开源平台</span>
+          </div>
+        </div>
+        <div class="policy-card reveal">
+          <div class="policy-meta">
+            <span class="policy-date">202X.XX</span>
+            <span class="policy-org">地方政府办公厅</span>
+          </div>
+          <h3>《地方具身智能产业发展实施方案》</h3>
+          <p class="policy-desc">构建全要素开源体系，支持开源社区建设，对重大开源项目给予专项奖励支持。</p>
+          <div class="policy-tags">
+            <span class="policy-tag">全要素开源体系</span>
+            <span class="policy-tag">开源社区</span>
+            <span class="policy-tag">专项奖励</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ========== 开源人才 (placeholder) ========== -->
+  <!-- ========== 开源人才 ========== -->
   <section id="talent" class="section-alt">
     <div class="section">
-      <div class="placeholder">[ Step 2 — 开源人才 ]</div>
+      <div class="section-header reveal">
+        <h2>开源人才</h2>
+        <p>以贡献为导向，集聚开源人才</p>
+      </div>
+      <div class="talent-grid">
+        <div class="talent-card reveal">
+          <div class="tc-icon">📋</div>
+          <h3>人才评价机制</h3>
+          <p>试点"开源贡献"导向人才评价，纳入急需紧缺人才目录，鼓励作为职称评聘参考。</p>
+          <span class="talent-highlight">创新试点</span>
+        </div>
+        <div class="talent-card reveal">
+          <div class="tc-icon">🎓</div>
+          <h3>高校开源教育</h3>
+          <p>支持高校开设开源相关课程，将开源贡献纳入评奖评优和推免体系，培养新一代开源人才。</p>
+          <span class="talent-highlight">产教融合</span>
+        </div>
+        <div class="talent-card reveal">
+          <div class="tc-icon">👥</div>
+          <h3>从业者队伍建设</h3>
+          <p>鼓励企业设立开源事业部，推动校企合作活动覆盖本地区高校，产教融合持续深化。</p>
+          <span class="talent-highlight">持续推进</span>
+        </div>
+      </div>
+      <div class="text-center mt-40 reveal">
+        <button class="btn-cta" onclick="openModal('talentModal')">开源人才入库登记</button>
+      </div>
     </div>
   </section>
 
-  <!-- ========== 案例遴选 (placeholder) ========== -->
+  <!-- 人才入库弹窗 -->
+  <div class="modal-overlay" id="talentModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('talentModal')">&times;</button>
+      <h3>开源人才入库登记</h3>
+      <form onsubmit="return handleTalentSubmit(event)">
+        <div class="form-group">
+          <label>姓名 *</label>
+          <input type="text" required placeholder="请输入您的姓名">
+        </div>
+        <div class="form-group">
+          <label>所属单位 *</label>
+          <input type="text" required placeholder="请输入所属单位">
+        </div>
+        <div class="form-group">
+          <label>所在区域 *</label>
+          <input type="text" required placeholder="请输入所在区域">
+        </div>
+        <div class="form-group">
+          <label>开源社区ID</label>
+          <input type="text" placeholder="GitHub / Gitee / AtomGit 等">
+        </div>
+        <div class="form-group">
+          <label>主要贡献领域 *</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" value="ai">人工智能</label>
+            <label><input type="checkbox" value="cloud">云计算</label>
+            <label><input type="checkbox" value="os">操作系统</label>
+            <label><input type="checkbox" value="db">数据库</label>
+            <label><input type="checkbox" value="devtools">开发工具</label>
+            <label><input type="checkbox" value="security">安全</label>
+            <label><input type="checkbox" value="other">其他</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>代表性项目名称</label>
+          <input type="text" placeholder="请输入您主要参与的开源项目">
+        </div>
+        <div class="form-group">
+          <label>联系电话 *</label>
+          <input type="tel" required placeholder="请输入联系电话">
+        </div>
+        <div class="form-group">
+          <label>邮箱 *</label>
+          <input type="email" required placeholder="请输入邮箱地址">
+        </div>
+        <div class="text-center mt-24">
+          <button type="submit" class="btn-submit">提交登记</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== 案例遴选 ========== -->
   <section id="cases">
     <div class="section">
-      <div class="placeholder">[ Step 2 — 案例遴选 ]</div>
+      <div class="section-header reveal">
+        <h2>案例遴选</h2>
+        <p>优质项目培优，标杆案例引领</p>
+      </div>
+      <div class="cases-grid">
+        <div class="case-card reveal">
+          <span class="case-tag ai">人工智能</span>
+          <h3>开源大模型项目</h3>
+          <p class="case-org">示例企业A</p>
+          <p class="case-intro">国产大模型标杆，以开源方式推动AI普惠化，在全球开源社区获得广泛关注。</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val">高关注度</div><div class="lbl">社区热度</div></div>
+            <div class="case-metric"><div class="val">多项目</div><div class="lbl">开源矩阵</div></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <span class="case-tag ai">人工智能</span>
+          <h3>全链条大模型工具</h3>
+          <p class="case-org">示例研究机构</p>
+          <p class="case-intro">全链条开源大模型工具体系，覆盖训练、推理、评测全流程，支持超长上下文。</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val">全链条</div><div class="lbl">开源工具</div></div>
+            <div class="case-metric"><div class="val">200K</div><div class="lbl">上下文窗口</div></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <span class="case-tag os">操作系统</span>
+          <h3>开源操作系统共建</h3>
+          <p class="case-org">示例高校</p>
+          <p class="case-intro">作为开源操作系统首批共建单位，在内核优化、驱动开发等方面做出核心贡献。</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val">首批</div><div class="lbl">共建单位</div></div>
+            <div class="case-metric"><div class="val">多项</div><div class="lbl">核心贡献</div></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <span class="case-tag fin">金融科技</span>
+          <h3>金融开源实践</h3>
+          <p class="case-org">示例研究院</p>
+          <p class="case-intro">推动金融行业开源标准建设，汇聚众多机构参与，聚焦AI等重点领域创新应用。</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val">多机构</div><div class="lbl">联合参与</div></div>
+            <div class="case-metric"><div class="val">AI</div><div class="lbl">重点领域</div></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <span class="case-tag auto">智能汽车</span>
+          <h3>车用操作系统开源</h3>
+          <p class="case-org">示例企业B</p>
+          <p class="case-intro">面向车用操作系统的产业级协同开源，助力智能汽车产业链降本增效。</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val">产业级</div><div class="lbl">协同开源</div></div>
+            <div class="case-metric"><div class="val">降本增效</div><div class="lbl">核心目标</div></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <span class="case-tag robot">具身智能</span>
+          <h3>具身智能开源底座</h3>
+          <p class="case-org">示例创新中心</p>
+          <p class="case-intro">构建全栈开源的具身智能基础设施，推动产业规模快速增长。</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val">全栈</div><div class="lbl">开源体系</div></div>
+            <div class="case-metric"><div class="val">快速增长</div><div class="lbl">产业目标</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-40 reveal">
+        <button class="btn-cta" onclick="openModal('caseModal')">申报优秀开源案例</button>
+      </div>
     </div>
   </section>
 
-  <!-- ========== 企业展示 (placeholder) ========== -->
+  <!-- 案例申报弹窗 -->
+  <div class="modal-overlay" id="caseModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('caseModal')">&times;</button>
+      <h3>申报优秀开源案例</h3>
+      <form onsubmit="return handleCaseSubmit(event)">
+        <div class="form-group">
+          <label>企业名称 *</label>
+          <input type="text" required placeholder="请输入企业名称">
+        </div>
+        <div class="form-group">
+          <label>项目名称 *</label>
+          <input type="text" required placeholder="请输入开源项目名称">
+        </div>
+        <div class="form-group">
+          <label>开源领域 *</label>
+          <select required>
+            <option value="">请选择</option>
+            <option>人工智能</option><option>操作系统</option>
+            <option>基础软件</option><option>金融科技</option>
+            <option>智能汽车</option><option>具身智能</option><option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>项目简介 *</label>
+          <textarea required placeholder="请简要描述项目背景、技术亮点和应用场景"></textarea>
+        </div>
+        <div class="form-group">
+          <label>开源仓库地址 *</label>
+          <input type="url" required placeholder="https://github.com/...">
+        </div>
+        <div class="form-group">
+          <label>联系人 *</label>
+          <input type="text" required placeholder="请输入联系人姓名">
+        </div>
+        <div class="form-group">
+          <label>电话 *</label>
+          <input type="tel" required placeholder="请输入联系电话">
+        </div>
+        <div class="form-group">
+          <label>邮箱 *</label>
+          <input type="email" required placeholder="请输入邮箱地址">
+        </div>
+        <div class="text-center mt-24">
+          <button type="submit" class="btn-submit">提交申报</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== 企业展示 ========== -->
   <section id="enterprise" class="section-alt">
     <div class="section">
-      <div class="placeholder">[ Step 2 — 企业展示 ]</div>
+      <div class="section-header reveal">
+        <h2>企业展示</h2>
+        <p>本地区开源生态重点企业、高校及科研机构</p>
+      </div>
+      <div class="ent-grid">
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🏢</div>
+          <h4>示例科技企业A</h4>
+          <div class="ent-type">人工智能</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🔬</div>
+          <h4>示例研究实验室</h4>
+          <div class="ent-type">科研机构</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🎓</div>
+          <h4>示例大学A</h4>
+          <div class="ent-type">高等院校</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🎓</div>
+          <h4>示例大学B</h4>
+          <div class="ent-type">高等院校</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🏢</div>
+          <h4>示例科技企业B</h4>
+          <div class="ent-type">基础软件</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🏢</div>
+          <h4>示例科技企业C</h4>
+          <div class="ent-type">计算机视觉</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🎓</div>
+          <h4>示例大学C</h4>
+          <div class="ent-type">高等院校</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🎓</div>
+          <h4>示例大学D</h4>
+          <div class="ent-type">高等院校</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">☁️</div>
+          <h4>示例云服务企业</h4>
+          <div class="ent-type">云计算</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🔍</div>
+          <h4>示例互联网企业</h4>
+          <div class="ent-type">互联网平台</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">🤖</div>
+          <h4>示例AI企业</h4>
+          <div class="ent-type">人工智能</div>
+        </div>
+        <div class="ent-card reveal">
+          <div class="ent-avatar">⚛️</div>
+          <h4>示例开源基金会</h4>
+          <div class="ent-type">行业组织</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ========== 项目展示 (placeholder) ========== -->
+  <!-- ========== 项目展示 ========== -->
   <section id="projects">
     <div class="section">
-      <div class="placeholder">[ Step 2 — 项目展示 ]</div>
+      <div class="section-header reveal">
+        <h2>项目展示</h2>
+        <p>本地区优质开源项目，涵盖多个技术领域</p>
+      </div>
+      <div class="proj-grid">
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang">Python</span>
+            <span class="proj-lang">AI</span>
+          </div>
+          <h3>开源大语言模型</h3>
+          <p class="proj-org">示例企业A</p>
+          <p class="proj-desc">高性能开源大语言模型，支持多语言、多模态，面向全球开发者开放。</p>
+          <div class="proj-stats">
+            <span class="proj-stat"><strong>高</strong> 社区活跃度</span>
+            <span class="proj-stat"><strong>多语言</strong> 支持</span>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang">Python</span>
+            <span class="proj-lang">ML</span>
+          </div>
+          <h3>全链条模型训练框架</h3>
+          <p class="proj-org">示例研究机构</p>
+          <p class="proj-desc">覆盖数据处理、模型训练、推理部署全流程的开源工具链。</p>
+          <div class="proj-stats">
+            <span class="proj-stat"><strong>全流程</strong> 覆盖</span>
+            <span class="proj-stat"><strong>活跃</strong> 社区</span>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang">C/C++</span>
+            <span class="proj-lang">OS</span>
+          </div>
+          <h3>开源操作系统内核</h3>
+          <p class="proj-org">示例高校</p>
+          <p class="proj-desc">面向物联网与边缘计算的轻量级开源操作系统内核。</p>
+          <div class="proj-stats">
+            <span class="proj-stat"><strong>轻量级</strong> 设计</span>
+            <span class="proj-stat"><strong>IoT</strong> 场景</span>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang">Java</span>
+            <span class="proj-lang">FinTech</span>
+          </div>
+          <h3>金融级微服务框架</h3>
+          <p class="proj-org">示例企业B</p>
+          <p class="proj-desc">面向金融行业的高可用微服务框架，支持分布式事务与灰度发布。</p>
+          <div class="proj-stats">
+            <span class="proj-stat"><strong>金融级</strong> 可靠性</span>
+            <span class="proj-stat"><strong>生产</strong> 验证</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ========== 新闻动态 (placeholder) ========== -->
+  <!-- ========== 新闻动态 ========== -->
   <section id="news" class="section-alt">
     <div class="section">
-      <div class="placeholder">[ Step 2 — 新闻动态 ]</div>
+      <div class="section-header reveal">
+        <h2>新闻动态</h2>
+      </div>
+      <div class="news-list">
+        <div class="news-item reveal">
+          <span class="news-date">202X.XX.XX</span>
+          <span class="news-type policy">政策</span>
+          <span class="news-title">《地方加强开源体系建设实施方案》正式施行</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">202X.XX.XX</span>
+          <span class="news-type policy">政策</span>
+          <span class="news-title">地方宣布将上线面向海外的开源平台</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">202X.XX.XX</span>
+          <span class="news-type event">活动</span>
+          <span class="news-title">开放原子校源行活动在本地区高校成功举办</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">202X.XX.XX</span>
+          <span class="news-type event">活动</span>
+          <span class="news-title">开源代码托管平台升级暨人工智能开源社区发布</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">202X.XX.XX</span>
+          <span class="news-type policy">政策</span>
+          <span class="news-title">《地方具身智能产业发展实施方案》正式施行</span>
+          <span class="news-arrow">→</span>
+        </div>
+        <div class="news-item reveal">
+          <span class="news-date">202X.XX.XX</span>
+          <span class="news-type event">活动</span>
+          <span class="news-title">全球开发者先锋大会在本地区开幕</span>
+          <span class="news-arrow">→</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -588,6 +1144,18 @@
       const t = document.getElementById('toast');
       t.textContent = msg; t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // Form handlers
+    function handleTalentSubmit(e) {
+      e.preventDefault(); closeModal('talentModal');
+      showToast('提交成功，我们将在3个工作日内与您联系');
+      e.target.reset(); return false;
+    }
+    function handleCaseSubmit(e) {
+      e.preventDefault(); closeModal('caseModal');
+      showToast('提交成功，我们将在3个工作日内与您联系');
+      e.target.reset(); return false;
     }
 
     // Modal
